@@ -54,16 +54,12 @@ const LoginUser = async (req, res) => {
     const user = await User.findOne({ employeeId }).exec();
     if (!user) return res.status(404).send("User with employee Id not found");
 
-    const matchPassword = comparePassword(password, user.password);
-    if (!matchPassword) res.status(401).send("Password did not match");
+    const matchPassword = await comparePassword(password, user.password);
+    if (!matchPassword) return res.status(401).send("Password did not match");
 
-    const accessToken = jwt.sign(
-      { _id: user._id },
-      process.env.JWT_ACCESS_TOKEN,
-      {
-        expiresIn: "7d",
-      },
-    );
+    const accessToken = jwt.sign({ _id: user._id }, process.env.JWT_ACCESS_TOKEN, {
+      expiresIn: "7d",
+    });
     // Return user token to user excluding password and send headers
     user.password = undefined;
 
