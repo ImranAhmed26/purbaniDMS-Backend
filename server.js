@@ -16,13 +16,20 @@ const PORT = process.env.PORT || 8080;
 const DB_URI = process.env.MONGO_URI;
 
 // Middleware
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:3000",
+//       "http://localhost:3001",
+//       "https://ecom-frontend-pi.vercel.app",
+//     ],
+//     credentials: true,
+//   }),
+// );
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:3001",
-      "https://ecom-frontend-pi.vercel.app",
-    ],
+    origin: '*',
     credentials: true,
   }),
 );
