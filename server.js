@@ -27,7 +27,10 @@ const DB_URI = process.env.MONGO_URI;
 //   }),
 // );
 
-app.use(cors({origin: '*' }),);
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json({ limit: "5mb" }));
