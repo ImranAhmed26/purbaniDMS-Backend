@@ -6,9 +6,9 @@ import { adminToken, buyerToken, supplierToken, userToken } from "../middleware/
 const router = express.Router();
 
 router
-  .get("/", adminToken, getUsers)
+  .get("/", getUsers)
   .get("/:id", getUser)
   .put("/:id", updateUser)
-  .delete("/:id", adminToken, deleteUser);
+  .delete("/:id", deleteUser);
 
 export default router;

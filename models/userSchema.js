@@ -32,6 +32,11 @@ const userSchema = Schema(
       required: true,
       minLength: [6, "Too Small to be secure"],
     },
+    role: {
+      type: String,
+      enum: ["superAdmin", "admin", "employee", "user", "internal"],
+      default: "employee",
+    },
   },
   { timestamps: true },
 );

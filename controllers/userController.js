@@ -8,7 +8,7 @@ const getUser = async (req, res) => {
     res.status(200).json(user);
   } catch (error) {
     console.log(error);
-    res.status(200).send("Error. Please try again");
+    res.status(401).send("Error. Please try again");
   }
 };
 
